@@ -19,6 +19,8 @@ export class Page2Component {
   isSubmitted = false;
   directionName = ""; 
   login='';
+  flag: boolean = false;
+
   newReview = {
     text: '',
     rating: 0,
@@ -30,6 +32,11 @@ export class Page2Component {
 
   toggleReviewForm() {
     this.isFormVisible = !this.isFormVisible;
+  }
+
+  notoggleReviewForm() {
+    this.isFormVisible = !this.isFormVisible;
+    this.flag = true;
   }
   // deleteReview(index: number, reviewText: string) {
   //   if (this.userRole < 1) {  // Если роль меньше 1, запрещаем удаление
@@ -68,25 +75,29 @@ export class Page2Component {
   this.newReview.direction = this.directionName;
   const reviewToSend = { ...this.newReview };
   console.log("Отправляем данные на сервер:", reviewToSend);
-
-  this.http.post('http://localhost:5000/add_reviews', reviewToSend).subscribe({
-    next: (response: any) => {
-      alert('Спасибо за отзыв!');
-      this.reviews.push({ ...reviewToSend });
-      this.isSubmitted = true;
-      this.newReview.rating = 0;
-      this.newReview.teacher_name = "";
-      this.newReview.text = "";
-      setTimeout(() => {
-        this.isSubmitted = false;
-        this.isFormVisible = false;
-      }, 5000);
-    },
-    error: () => {
-      alert('Ошибка при отправке отзыва');
-    }
-  });
-
+  if (!this.flag){
+    this.http.post('http://localhost:5000/add_reviews', reviewToSend).subscribe({
+      next: (response: any) => {
+        alert('Спасибо за отзыв!');
+        this.reviews.push({ ...reviewToSend });
+        this.isSubmitted = true;
+        // this.newReview.rating = 0;
+        // this.newReview.teacher_name = "";
+        // this.newReview.text = "";
+        setTimeout(() => {
+          this.isSubmitted = false;
+          this.isFormVisible = false;
+        }, 5000);
+      },
+      error: () => {
+        alert('Ошибка при отправке отзыва');
+      }
+    });
+  }
+  this.flag = false;
+  this.newReview.rating = 0;
+  this.newReview.teacher_name = "";
+  this.newReview.text = "";
 }
 
          
