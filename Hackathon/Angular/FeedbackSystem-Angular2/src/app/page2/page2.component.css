@@ -1,0 +1,277 @@
+.star-rating {
+    direction: rtl;
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+  }
+  
+  .star-rating input {
+    display: none;
+  }
+  
+  .star-rating label {
+    color: #ddd;
+    font-size: 24px;
+    padding: 0 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .star-rating label:hover,
+  .star-rating label:hover ~ label,
+  .star-rating input:checked ~ label {
+    color: #ffc107;
+  }
+  
+
+  .contact{
+    display: flex;
+    gap: 100px;
+  }
+  
+  .footer h4{
+    
+    font-size: 18px;
+    font-weight: 200;
+  }
+  
+  a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
+  }
+  
+  a:hover{
+    text-decoration: solid 1px black;
+  }
+  
+
+  .footer{
+    height: 80px;
+    background-color: #0D47A1;
+    display: flex;
+    align-items: center;
+  
+    justify-content: flex-end;
+    gap: 100px;
+    color: white;
+    padding: 24px;
+  }
+
+  .header{
+    background-color: #0D47A1;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    padding: 10px;
+    min-height: 10vh;
+    justify-content: space-between;
+    gap: 100px;
+    color: white;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  }
+
+.card-container{
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 32px;
+  color: #0D47A1;
+  background-color: white;
+  color: #0D47A1;
+  border-radius: 16px;
+  font-size: 24px;
+  min-height: 300px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  align-items: center;
+
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+
+}
+
+.card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.card-title{
+  font-size: 24px;
+}
+
+.card-text{
+  max-height: 150px;
+  font-size: 24px;
+  color: rgb(75, 109, 160);
+  text-overflow: clip;
+  overflow-wrap: normal;
+  text-wrap: wrap;
+  word-break: break-all;
+  overflow-y: auto;
+}
+
+  /* .main-container{
+    min-height: 100vh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .body-container{
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+
+    overflow-y: auto;
+
+
+  } */
+  .main-container {
+    height: 100vh; /* Главное ограничение по высоте */
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Скроллим только этот контейнер */
+}
+
+.body-container {
+    width: 100%;
+    flex-grow: 1; /* Позволяет контейнеру отзывов занимать доступное пространство */
+    padding: 20px;
+}
+
+  .review-container{
+    
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .btn-sumbit {
+    width: 250px;
+    min-height: 60px;
+    margin: 24px 0px;
+    background: white;
+    border: none;
+    color: #0D47A1;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-sumbit:hover {
+    background: rgb(216, 212, 212);
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  height: 70%;
+  display: flex;
+  font-size: 24px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #0D47A1;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+
+}
+
+.modal-buttons button{
+  width: 250px;
+  min-height: 60px;
+  margin: 48px 0px;
+  background: white;
+  border: none;
+  color: #0D47A1;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+textarea{
+  min-height: 40%;
+  max-height: 40%;
+}
+
+button {
+  cursor: pointer;
+}
+
+.modal-input-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+input {
+  color: black;
+  width: 100%;
+  margin-top: 5px;
+  font-size: 24px;
+  border: none;
+}
+input:focus {
+  outline: none;
+  border: none;
+}
+
+.f-container{
+  font-size: 24px;
+  color: #7F9DC3;
+  font-weight: 500;
+  text-align: left;
+  margin: 48px 0px;
+  border: none;
+  border-bottom: 2px solid #0D47A1;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  background: none;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.delete-btn:hover {
+  color: darkred;
+  transform: scale(1.2);
+}

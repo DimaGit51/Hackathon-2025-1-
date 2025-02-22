@@ -1,0 +1,90 @@
+<div class="main-container">
+
+  <div class="header">
+    <h1 class="text-center">Отзывы о преподавателях дисциплины</h1>
+    <button class="btn-sumbit" *ngIf="userRole === 2 || userRole === 1 || userRole === 3"
+    (click)="toggleReviewForm()">Написать свой отзыв</button>
+  </div>
+
+  <div class="body-container">
+    <div id="reviews-list" class="review-container">
+      <div *ngFor="let review of reviews; let i = index" class="card-container col-md-3">
+        <div class="card-title">Преподаватель {{ review.teacher_name }}</div>
+        <!-- <button class="delete-btn" *ngIf="userRole === 2 || userRole === 1" class="btn-delete" (click)="deleteReview(i, review.id)">❌</button> -->
+        <hr width="60%">
+        <div class="card-text">{{ review.text }}</div>
+        <div class="rating text-warning">
+          <span *ngFor="let star of getStars(review.rating)">★</span>
+        </div> 
+      </div> 
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="contact">
+      <a href="https://ssau.ru/info/contacts">Контакты</a>
+      <a href="https://ssau.ru/info">О нас</a>
+    </div>
+    <h4>г. Самара 2025 г.</h4>
+  </div>
+
+  <div *ngIf="isFormVisible" id="review-form" class="modal">
+    <div class="modal-content">
+      <h2>Оставьте свой отзыв</h2>
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <div class="d-flex justify-content-center">
+        <div class="star-rating">
+          <input type="radio" id="star5" name="rating" [(ngModel)]="newReview.rating" [value]="5">
+          <label for="star5" class="bi bi-star-fill"></label>
+          <input type="radio" id="star4" name="rating" [(ngModel)]="newReview.rating" [value]="4">
+          <label for="star4" class="bi bi-star-fill"></label>
+          <input type="radio" id="star3" name="rating" [(ngModel)]="newReview.rating" [value]="3">
+          <label for="star3" class="bi bi-star-fill"></label>
+          <input type="radio" id="star2" name="rating" [(ngModel)]="newReview.rating" [value]="2">
+          <label for="star2" class="bi bi-star-fill"></label>
+          <input type="radio" id="star1" name="rating" [(ngModel)]="newReview.rating" [value]="1">
+          <label for="star1" class="bi bi-star-fill"></label>
+        </div>
+      </div>
+
+    <div class="modal-input-container">
+      <form (ngSubmit)="submitReview()" #reviewForm="ngForm" >
+        <div class="f-container">
+          <label for="prof-name">ФИО преподавателя:</label>
+          <input type="text" id="prof-name" [(ngModel)]="newReview.teacher_name" name="profName" placeholder="Иванов И. И."
+            required>
+        </div>
+  
+        <div class="f-container">
+          <label for="review-text" class="form-label">Отзыв:</label>
+          <input type="text" id="review-text" [(ngModel)]="newReview.text" name="reviewText"
+          required>
+          <!-- <textarea id="review-text" [(ngModel)]="newReview.reviewText" name="reviewText" 
+            maxlength="301" required></textarea> -->
+        </div>
+
+        <div class="modal-buttons">
+          <button type="submit" class="btn btn-success" [disabled]="!reviewForm.valid" (click)="toggleReviewForm()">Отправить</button>
+          <button (click)="toggleReviewForm()">Отмена</button>
+        </div>
+    
+      </form>
+    </div>  
+
+
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isSubmitted"
+  class="toast show align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-3" role="alert"
+  aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Комментарий отправлен на модерацию!
+    </div>
+    <!-- <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeToast()"></button> -->
+  </div>
+</div>

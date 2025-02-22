@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="main-container col-md-10">
+
+    <form class="form-container col-md-6" (ngSubmit)="login_func()">
+      <h2>Авторизация</h2>
+      <div class="login-container col-md-8">
+        <label for="login">Логин</label>
+        <input type="login" id="login" [(ngModel)]="login" placeholder="2222-22222" name="login" required />
+      </div>
+
+      <div class="password-container col-md-8">
+        <label for="password">Пароль</label>
+        <input type="password" id="password" [(ngModel)]="password" placeholder="*******" name="password" required />
+      </div>
+
+      <button class="btn-sumbit" type="submit">Войти</button>
+      <div class="guest-container">
+        <hr class="hline">
+        Нет аккаунта?
+        <button class="btn-guest" (click)="loginAsGuest()">Зайти гостем</button>
+        <hr class="hline">
+      </div>
+
+    </form>
+
+    <div class="logo-container col-md-6">
+      <img class="logo-img" src="assets/ssauLogo.png" alt="image">
+    </div>
+
+
+  </div>
+</div>

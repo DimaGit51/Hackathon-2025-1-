@@ -1,0 +1,34 @@
+<div class="main-container">
+
+  <div class="header">
+    
+    <div class="img-container">
+      <div class="col-md-6">
+          <img [src]="instituteLogo" alt="institute logo" alt="logo">
+      </div>
+    </div>
+    <div class="col-md-6 doptext">
+      Направления подготовки {{ instituteName }}
+    </div>
+  </div>
+
+
+  <div class="body-container">
+    <div class="directions-container">
+      <div class="direction-card " *ngFor="let direction of directions" (click)="goToSubjects(direction.name)">
+        {{ direction.name }}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="contact">
+      <a href="https://ssau.ru/info/contacts">Контакты</a>
+      <a href="https://ssau.ru/info">О нас</a>
+    </div>
+    <div>
+      <h4>г. Самара 2025 г.</h4>
+    </div>
+</div>
+
+

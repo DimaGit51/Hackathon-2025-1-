@@ -1,0 +1,60 @@
+<div class="main-container">
+
+  <div class="header">
+    <h2>Дисциплины направления «{{ directionName }}»</h2>
+    <button class="btn-sumbit" *ngIf="userRole === 2 || userRole === 1" (click)="openAddDisciplineForm()">Добавить дисциплину</button>
+    <select [(ngModel)]="selectedCourse" class="course-select">
+      <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+    </select>
+ 
+  </div>
+  <div class="body-container ">
+
+
+    <div *ngIf="openDisciplineForm" class="modal">
+      <div class="modal-content">
+        <h3>Добавить дисциплину</h3>
+        <div class="form-container">
+          <div class="disp-container">
+            <label for="text">Название дисциплины</label>
+            <input type="text" [(ngModel)]="newDiscipline.name" placeholder="Физика"/>
+          </div>
+
+          <select class="select-course-adm" [(ngModel)]="newDiscipline.course">
+            <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+          </select>
+        </div>
+
+        <div class="modal-buttons">
+          <button (click)="addDiscipline()">Добавить</button>
+          <button (click)="closeDisciplineForm()">Отмена</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="subjects-container">
+      <div class="subjects-container">
+        <div class="subject-card" *ngFor="let subject of filteredSubjects" (click)="goToProfessors(subject.name)">
+          {{ subject.name }}
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="footer">
+    <div class="contact">
+      <a href="https://ssau.ru/info/contacts">Контакты</a>
+      <a href="https://ssau.ru/info">О нас</a>
+    </div>
+    <h4>г. Самара 2025 г.</h4>
+  </div>
+</div>
+
+
+
+
+
+
+

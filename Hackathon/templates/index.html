@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест API (Добавление)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        input, select, button {
+            margin: 5px 0;
+            padding: 8px;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест API</h1>
+
+    <!-- Форма добавления пользователя -->
+    <h2>Добавить пользователя</h2>
+    <input type="text" id="login" placeholder="Логин" required>
+    <input type="password" id="password" placeholder="Пароль" required>
+    <select id="role" required>
+        <option value="0">Обычный пользователь</option>
+        <option value="1">Модератор</option>
+        <option value="2">Админ</option>
+    </select>
+    <button onclick="addUser()">Добавить пользователя</button>
+
+    <!-- Форма добавления курса -->
+    <h2>Добавить курс</h2>
+    <input type="text" id="course_desc" placeholder="Описание курса" required>
+    <input type="number" id="course_rating" placeholder="Рейтинг (0-5)" step="0.1" min="0" max="5" required>
+    <input type="number" id="course_year" placeholder="Год курса (например, 2023)" required>
+    <button onclick="addCourse()">Добавить курс</button>
+
+    <!-- Форма добавления преподавателя -->
+    <h2>Добавить преподавателя</h2>
+    <input type="text" id="teacher_desc" placeholder="Описание преподавателя" required>
+    <input type="number" id="teacher_rating" placeholder="Рейтинг (0-5)" step="0.1" min="0" max="5" required>
+    <input type="number" id="teacher_year" placeholder="Год преподавателя (например, 2023)" required>
+    <button onclick="addTeacher()">Добавить преподавателя</button>
+
+    <!-- Форма добавления отзыва -->
+    <h2>Добавить отзыв</h2>
+    <input type="text" id="review_text" placeholder="Текст отзыва" required>
+    <input type="number" id="review_rating" placeholder="Рейтинг (0-5)" step="1" min="0" max="5" required>
+    <input type="text" id="review_login" placeholder="Логин пользователя" required>
+    <input type="number" id="review_course_id" placeholder="ID курса (необязательно)">
+    <input type="number" id="review_teacher_id" placeholder="ID преподавателя (необязательно)">
+    <button onclick="addReview()">Добавить отзыв</button>
+
+    <script>
+        async function addUser() {
+            const data = {
+                login: document.getElementById("login").value,
+                password: document.getElementById("password").value,
+                role: document.getElementById("role").value
+            };
+            try {
+                const response = await fetch("/users", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                alert(result.message || result.error);
+            } catch (error) {
+                alert("Ошибка при добавлении пользователя: " + error.message);
+            }
+        }
+
+        async function addCourse() {
+            const data = {
+                description: document.getElementById("course_desc").value,
+                rating: parseFloat(document.getElementById("course_rating").value),
+                year: parseInt(document.getElementById("course_year").value)  // Новое поле
+            };
+            try {
+                const response = await fetch("/courses", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                alert(result.message || result.error);
+            } catch (error) {
+                alert("Ошибка при добавлении курса: " + error.message);
+            }
+        }
+
+        async function addTeacher() {
+            const data = {
+                description: document.getElementById("teacher_desc").value,
+                rating: parseFloat(document.getElementById("teacher_rating").value),
+                year: parseInt(document.getElementById("teacher_year").value)  // Новое поле
+            };
+            try {
+                const response = await fetch("/teachers", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                alert(result.message || result.error);
+            } catch (error) {
+                alert("Ошибка при добавлении преподавателя: " + error.message);
+            }
+        }
+
+        async function addReview() {
+            const data = {
+                text: document.getElementById("review_text").value,
+                rating: parseInt(document.getElementById("review_rating").value),
+                login: document.getElementById("review_login").value,
+                course_id: document.getElementById("review_course_id").value || null,
+                teacher_id: document.getElementById("review_teacher_id").value || null
+            };
+            try {
+                const response = await fetch("/reviews", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                alert(result.message || result.error);
+            } catch (error) {
+                alert("Ошибка при добавлении отзыва: " + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

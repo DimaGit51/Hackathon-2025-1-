@@ -1,0 +1,132 @@
+.container{
+    display: flex;
+    background-color: #7F9DC3;
+    min-height: 100vh;
+    min-width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+img {
+    pointer-events: none;
+  }
+
+.main-container {
+    display: flex;
+    justify-content: center;
+
+    margin: 96px 0px;
+    background: #ffffff;
+    border-radius: 16px;
+    max-height: 80vh;
+    max-width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+h2{
+    color: #0D47A1;
+    font-size: 48px;
+}
+
+.login-container{
+    font-size: 24px;
+    color: #7F9DC3;
+    font-weight: 500;
+    text-align: left;
+    margin: 48px 0px;
+    border: none;
+    border-bottom: 2px solid #0D47A1;
+}
+
+.password-container{
+    font-size: 24px;
+    color: #7F9DC3;
+    font-weight: 500;
+    text-align: left;
+    margin: 48px 0px;
+    border: none;
+    border-bottom: 2px solid #0D47A1;
+}
+
+.form-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 72px 0px;
+}
+
+.logo-container{
+    background-color: #0D47A1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0px,0px,0px,24px;
+    border-radius: 0px 16px 16px 0px;
+    
+}
+
+.logo-img{
+    max-width: 80%;
+    height: auto;
+}
+
+input {
+    color: black;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 24px;
+    border: none;
+}
+input:focus {
+    outline: none;
+    border: none;
+}
+
+
+
+.guest-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7F9DC3;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-guest{
+    border: none;
+    color: #0D47A1;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.hline{
+    border-bottom: 2px solid #0D47A1;
+    width: 15%;
+}
+
+.btn-guest:hover{
+    color: #1a7feb;
+    text-decoration: underline #1a7feb;
+
+}
+
+.btn-sumbit {
+    width: 250px;
+    min-height: 60px;
+    margin: 48px 0px;
+    background: #0D47A1;
+    border: none;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-sumbit:hover {
+    background: #1a7feb;
+}

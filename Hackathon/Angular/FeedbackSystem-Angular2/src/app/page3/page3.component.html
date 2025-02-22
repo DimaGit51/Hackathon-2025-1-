@@ -1,0 +1,31 @@
+<div class="main-container">
+    
+    <div class="img-container">
+        <div class="col-md-6">
+            <img src="assets/ssauLogo.png" alt="logo" class="dopimg">
+        </div>
+        <div class="col-md-6 doptext">
+            Лучшее место для ваших отзывов
+        </div>
+    </div>
+
+    <div class="institutes-container">
+        <div class="grid">
+          <div *ngFor="let institute of institutes" class="card" (click)="goToSubjects(institute.id)">
+            <img [src]="institute.image" alt="institute logo">
+            <h3>{{ institute.name }}</h3>
+          </div>
+        </div>
+      </div>
+
+    <div class="footer">
+        <div class="contact">
+            <a href="https://ssau.ru/info/contacts">Контакты</a>
+            <a href="https://ssau.ru/info">О нас</a>
+        </div>
+        <h4>г. Самара 2025 г.</h4>
+    </div>
+</div>
+
+
+  
